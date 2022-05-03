@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # memebers.urls에 작성한 주소 매핑 정보를 등록합니다.
+    path('members/', include('members.urls'))
 ]

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>index.html</h1>
+
+        {# 이 부분은 주석입니다 #}
+        {% comment %}
+            동해물과 백두산이
+            마르고 닳도록
+            하느님이 보우하사
+            우리나라 만세
+        {% endcomment %}
+
+        {# view에서 전달한 변수 값 출력 #}
+        <h3>{{title}}</h3>
+
+        {# 만약 없는 이름을 사용하면 아무것도 출력되지 않는다. #}
+        <h3>{{title100}}</h3>
+
+        {# html 파일 안에서만 사용할 값을 정의 할 수도 있다. #}
+        {% with title200='반갑습니다' %}
+        <h3>{{title200}}</h3>
+        {% endwith %}
+
+        {# if : 조건에 만족할 경우 if 문 블럭의 html을 응답 결과에 포함 시킨다. #}
+
+        {# 값 존재 확인 #}
+        {% if a100 %}
+        <h3>a100 변수가 존재합니다</h3>
+        {% endif %}
+
+        {% if a200 %}
+        <h3>a200 변수가 존재합니다</h3>
+        {% endif %}
+
+        {# if 문 #}
+
+        {% if a200 == 5 %}
+        <h3>a200은 5입니다</h3>
+        {% endif %}
+
+        {% if a200 == 10 %}
+        <h3>a200은  10입니다</h3>
+        {% endif %}
+
+        {# else : 모든 조건이 거짓일 경우 #}
+        {% if a200 == 10 %}
+        <h3>a200은 10입니다</h3>
+        {% else %}
+        <h3>a200은 10이 아닙니다</h3>
+        {% endif %}
+
+        {# elif : 상단 조건이 거짓을 경우 수행될 조건 #}
+        {% if a200 == 0 %}
+        <h3>a200은 0입니다</h3>
+        {% elif a200 == 5 %}
+        <h3>a200은 5입니다</h3>
+        {% elif a200 == 10 %}
+        <h3>a200은 10입니다</h3>
+        {% else %}
+        <h3>a200은 0, 5, 10이 아닙니다</h3>
+        {% endif %}
+
+        {# for : 전달받은 데이터의 수 만큼 반복한다 #}
+        {% for m1 in member_list %}
+        <h6>id : {{m1.id}}</h6>
+        <h6>first_name : {{m1.first_name}}</h6>
+        <h6>last_name : {{m1.last_name}}</h6>
+        <hr/>
+        {% endfor %}
+
+        {# cycle : for문 내부에서 사용 가능하며 #}
+        {# 반복 횟차 번째에 사용할 값을 지정할 수 있다 #}
+        {# 반복 횟차 보다 지정된 값이 적으면 순회한다 #}
+
+        {% for m1 in member_list %}
+        <div style="background-color:{% cycle 'pink' 'yellow' %}">
+        <h6>id : {{m1.id}}</h6>
+        <h6>first_name : {{m1.first_name}}</h6>
+        <h6>last_name : {{m1.last_name}}</h6>
+        <hr/>
+        </div>
+        {% endfor %}
+    </body>
+</html>

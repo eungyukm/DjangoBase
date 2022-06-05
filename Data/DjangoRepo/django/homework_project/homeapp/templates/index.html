@@ -1,0 +1,22 @@
+<html>
+    <body>
+        <h1>index.html</h1>
+
+        <h3>5월 6일 (금요일) 오후 2시까지...</h3>
+        <h3>nury.applogin@gmail.com</h3>
+        
+        <hr/>
+
+        <form action="/add" method="post">
+            {% csrf_token %}
+            이름 : <input type="text" name="user_name"/><br/>
+            내용 : <textarea name="guestbook_text"></textarea><br/>
+            <button type="submit">작성</button>
+        </form>
+
+        <hr/>
+
+        <a href="/result">방명록보기</a>
+
+    </body>
+</html>

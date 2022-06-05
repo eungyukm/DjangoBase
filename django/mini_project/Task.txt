@@ -1,0 +1,69 @@
+1. 프로젝트 생성
+ - django-admin startproject mini_project
+
+-------------------------------------------------------------------------
+
+2. 앱 생성
+ - 생성된 프로젝트 폴더에 manage.py 파일이 있는 곳으로 이동해서 입력합니다.
+
+-------------------------------------------------------------------------
+
+ 3. 각 app에 Urls.py 파일을 생성하고, urlpatterns 를 설정합니다.
+
+-------------------------------------------------------------------------
+
+ 4. mini_project의 urls.py 파일에 각 app의 url.py를 등록 합니다.
+
+ -------------------------------------------------------------------------
+
+ 5. mini_project/settings.py 에 app을 등록해줍니다.
+
+ 6. 각 app에 templates 폴더를 각각 생성합니다.    
+
+ 7. migration 작업을 수행합니다.
+
+ 8. 각 app의 templates 폴더에 html 파일을 넣어줍니다.
+ main_app/templates - index.html
+ use_app/templates - join.html, login.html, user_modify.html
+ board_app/templates - board_main.html, board_modify.html,
+ board_read.html, board_write.html
+
+
+ 9. 첫 페이지 요청을 처리합니다.
+
+ main_app/view.py - index 함수를 작성합니다.
+ main_app/urls.py - index 함수에 대한 주소 매칭 코드를 작성합니다.
+
+ 10. 상단 메뉴, 하단 정보 같은 공통 영역의 html 파일을 넣어둘 폴더를 생성합니다.
+ 프로젝트 폴더에 templates 폴더를 만들어줍니다.
+ mini_project/templates
+
+ 11. mini_project/settings.py 파일에 mini_project/templates 폴더를 등록해 줍니다.
+ mini_project/templates 폴더에 top_menu.htnl, buttom_info.html 파일을 생성합니다.
+
+ import os
+
+ TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'mini_project', 'templates')],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+12. mini_project/templates 폴더에 top_menu.htnl, bottom.html 파일을 생성합니다.
+
+13. main_app/templates/index.html에서 상단 메뉴 부분과 하단 정보 부분을 잘라내어
+mini_project/templates/top_menu.html과 bottom_info.html에 각각 넣어 줍니다.
+
+14. html 파일에 상단 메뉴 부분과 하단 정보 부분에 html을 include 해 줍니다.
+{% include 'top_menu.html' %}
+{% include 'bottom_info.html' %}

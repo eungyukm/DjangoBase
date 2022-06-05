@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {# 이 부분은 주석입니다. #}
+
+    {% comment %}
+        이 부분은
+        여러 줄
+        주석입니다.
+    {% endcomment %}
+
+    {% comment %}
+    <h1>{{title}}</h1>
+    {% endcomment %}
+
+    {# 변수 출력 #}
+    {% with discription="반갑습니다" %} 
+    <h3>{{discription}}</h3>
+    {% endwith %}
+
+    {% if a1 == 10 %} 
+    <h3>h1은 10입니다.</h3>
+    {% elif a1 == 5 %} 
+    <h3>a1은 5입니다</h3>
+    {% elif a1 == 10 %}
+    <h3>a1은 10압니다.</h3>
+    {% else %} 
+    <h3>a1은 20이 아닙니다</h3>
+    {% endif %}
+
+    <hr/>
+    {% for m in members %} 
+    {{m.id}}<br/>
+    {{m.firstname}}<br/>
+    {{m.lastname}}<br/>
+    <hr/>
+    {% endfor %}
+
+    {% for m in members%}
+    <div>
+    {{m.id}}><br/>
+    {{m.firstname}}<br/>
+    {{m.lastname}}<br/>
+    </dvie>
+    <hr/>
+    {% endfor%}
+
+    {# cycle : for문 내부에서 사용 가능하며 #}
+    {# 반복 횟차에 사용할 값을 지정할 수  있다#}
+    {# 반복 횟차 보다 지정된 값이 적으면 순회 한다. #}
+
+    {% for m1 in members %}
+    <div style="background-color:{% cycle 'pink' 'yellow' %}"
+    <h6>id : {{m1.id}}</h6>
+    {% endfor %}
+</body>
+</html>

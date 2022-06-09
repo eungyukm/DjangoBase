@@ -67,3 +67,18 @@ mini_project/templates/top_menu.html과 bottom_info.html에 각각 넣어 줍니
 14. html 파일에 상단 메뉴 부분과 하단 정보 부분에 html을 include 해 줍니다.
 {% include 'top_menu.html' %}
 {% include 'bottom_info.html' %}
+
+16. top_menu.html의 각 주소 세팅
+자유, 유머, 정치, 스포츠 - board/board_main
+로그인 - user/login
+회원가입 - user/join
+정보수정 - user/modify_user
+로그아웃 - /
+
+17. user_app/views.py 파일에 요청시 호출될 함수를 만들어 줍니다.
+    board_app/views.py 파일에 요청시 호출될 함수를 만들어 줍니다.
+
+18. user_app/urls.py 파일에 요청 주소와 호출될 함수를 등록합니다.
+    board_app/url.py 파일에 요청 주소와 호출될 함수를 등록합니다.
+
+19. 모든 html 파일의 상단 메뉴와 하단 정보를 include 코드로 변경합니다.

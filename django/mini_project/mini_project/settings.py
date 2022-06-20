@@ -77,10 +77,27 @@ WSGI_APPLICATION = 'mini_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 데이터베이스 엔진 명. 그대로...
+        'ENGINE': 'django.db.backends.mysql',
+        # 데터이스 이름. 사전에 데터이스가 생성되어 있어야 한다.
+        'NAME': 'board_db',
+        # 접속 계정
+        'USER' : 'root', 
+        # 접속 비밀번호
+        'PASSWORD' : 'eungyu1994', 
+        # MySql이 설치된 컴퓨터 IP 혹은 도메인
+        'HOST' : 'localhost',
+        # 포트 번호 (기본 : 3306)
+        'PORT' : '3306'
     }
 }
 

@@ -23,5 +23,9 @@ def index(request):
     # model4.board_info_name = "스포츠게시판"
     # model4.save()
 
+    render_data = {
+
+    }
+
     template = loader.get_template('index.html')
-    return HttpResponse(template.render())  
+    return HttpResponse(template.render(render_data, request))

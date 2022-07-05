@@ -11,7 +11,9 @@ class TopMenuMiddleware :
     def process_request(self, request) :
         # print('top menu middleware')
         # 데이터베이스에서 상단 메뉴를 구성하기 위해 필요한 데이터를 가져옵니다.
-        menu_list = board_app.models.BoardInfoTable.objects.all().values()
+        menu_list = board_app.models.BoardInfoTable.objects.all()
+        
+        # print(menu_list)
         # request 영역에 저장합니다.
         request.menu_list = menu_list
 

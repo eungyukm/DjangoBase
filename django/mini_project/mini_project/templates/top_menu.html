@@ -7,10 +7,9 @@
 	</button>
 	<div class="collapse navbar-collapse" id="navMenu">
 		<ul class="navbar-nav">
-
 			{% for menu in request.menu_list %}
 			<li class="nav-item">
-				<a href="/board/board_main?board_info_idx={{menu.board_info_idx}}" class="nav-link">자유게시판</a>
+				<a href="/board/board_main?board_info_idx={{menu.board_info_idx}}" class="nav-link">{{menu.board_info_name}}</a>
 				{{menu.board_info_name}}
 			</li>
 			{% endfor %}

@@ -22,7 +22,9 @@
 		<div class="col-sm-6">
 			<div class="card shadow">
 				<div class="card-body">
-					<form action="board_read.html" method="post">
+					<form action="/board/board_write_result" method="post" enctype="multipart/form-data">
+					{% csrf_token %}
+					<input type="hidden" name="board_info_idx" value="{{board_info_idx}}"/>
 					<div class="form-group">
 						<label for="board_subject">제목</label>
 						<input type="text" id="board_subject" name="board_subject" class="form-control"/>

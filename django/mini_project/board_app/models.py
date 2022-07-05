@@ -13,7 +13,7 @@ class ContentTable(models.Model) :
     content_idx = models.AutoField(primary_key=True)
     content_subject = models.CharField(max_length=500)
     content_text = models.TextField()
-    content_file = models.CharField(max_length=500, null=True)
+    content_file = models.FileField(upload_to='files/', null=True)
     # 외래키(UserTable의 PK 컬럼을 참조합니다.
     # 만약 참조하는 테이블의 PK 컬럼이 아닌 다른 컬럼을 참조하겠다면
     # related_name='컬럼명'을 설정해 줍니다.

@@ -29,76 +29,17 @@
 					</tr>
 				</thead>
 				<tbody>
+					{% for c1 in content_list %}
 					<tr>
-						<td class="text-center d-none d-md-table-cell">10</td>
-						<td><a href='board_read.html'>글 제목 입니다</a></td>
-						<td class="text-center d-none d-md-table-cell">홍길동</td>
-						<td class="text-center d-none d-md-table-cell">2018-12-12</td>
+						<td class="text-center d-none d-md-table-cell">{{c1.content_idx}}</td>
+						<td><a href='/board/board_read?board_info_idx={{board_info_idx}}&content_idx={{c1.content_idx}}'>
+							{{c1.content_subject}}
+						</a></td>
+						<td class="text-center d-none d-md-table-cell">{{c1.content_writer_idx.user_name}}</td>
+						<td class="text-center d-none d-md-table-cell">{{c1.content_date|date:'Y-m-d'}}</td>
 						
 					</tr>
-					<tr>
-						<td class="text-center d-none d-md-table-cell">10</td>
-						<td><a href='board_read.html'>글 제목 입니다</a></td>
-						<td class="text-center d-none d-md-table-cell">홍길동</td>
-						<td class="text-center d-none d-md-table-cell">2018-12-12</td>
-						
-					</tr>
-					<tr>
-						<td class="text-center d-none d-md-table-cell">10</td>
-						<td><a href='board_read.html'>글 제목 입니다</a></td>
-						<td class="text-center d-none d-md-table-cell">홍길동</td>
-						<td class="text-center d-none d-md-table-cell">2018-12-12</td>
-						
-					</tr>
-					<tr>
-						<td class="text-center d-none d-md-table-cell">10</td>
-						<td><a href='board_read.html'>글 제목 입니다</a></td>
-						<td class="text-center d-none d-md-table-cell">홍길동</td>
-						<td class="text-center d-none d-md-table-cell">2018-12-12</td>
-						
-					</tr>
-					<tr>
-						<td class="text-center d-none d-md-table-cell">10</td>
-						<td><a href='board_read.html'>글 제목 입니다</a></td>
-						<td class="text-center d-none d-md-table-cell">홍길동</td>
-						<td class="text-center d-none d-md-table-cell">2018-12-12</td>
-						
-					</tr>
-					<tr>
-						<td class="text-center d-none d-md-table-cell">10</td>
-						<td><a href='board_read.html'>글 제목 입니다</a></td>
-						<td class="text-center d-none d-md-table-cell">홍길동</td>
-						<td class="text-center d-none d-md-table-cell">2018-12-12</td>
-						
-					</tr>
-					<tr>
-						<td class="text-center d-none d-md-table-cell">10</td>
-						<td><a href='board_read.html'>글 제목 입니다</a></td>
-						<td class="text-center d-none d-md-table-cell">홍길동</td>
-						<td class="text-center d-none d-md-table-cell">2018-12-12</td>
-						
-					</tr>
-					<tr>
-						<td class="text-center d-none d-md-table-cell">10</td>
-						<td><a href='board_read.html'>글 제목 입니다</a></td>
-						<td class="text-center d-none d-md-table-cell">홍길동</td>
-						<td class="text-center d-none d-md-table-cell">2018-12-12</td>
-						
-					</tr>
-					<tr>
-						<td class="text-center d-none d-md-table-cell">10</td>
-						<td><a href='board_read.html'>글 제목 입니다</a></td>
-						<td class="text-center d-none d-md-table-cell">홍길동</td>
-						<td class="text-center d-none d-md-table-cell">2018-12-12</td>
-						
-					</tr>
-					<tr>
-						<td class="text-center d-none d-md-table-cell">10</td>
-						<td><a href='board_read.html'>글 제목 입니다</a></td>
-						<td class="text-center d-none d-md-table-cell">홍길동</td>
-						<td class="text-center d-none d-md-table-cell">2018-12-12</td>
-						
-					</tr>
+					{% endfor %}
 				</tbody>
 			</table>
 			
@@ -107,36 +48,11 @@
 					<li class="page-item">
 						<a href="#" class="page-link">이전</a>
 					</li>
+					{% for idx in pagenation_data %}
 					<li class="page-item">
-						<a href="#" class="page-link">1</a>
+						<a href="/board/board_main?board_info_idx={{board_info_idx}}&page_num={{idx}}" class="page-link">{{idx}}</a>
 					</li>
-					<li class="page-item">
-						<a href="#" class="page-link">2</a>
-					</li>
-					<li class="page-item">
-						<a href="#" class="page-link">3</a>
-					</li>
-					<li class="page-item">
-						<a href="#" class="page-link">4</a>
-					</li>
-					<li class="page-item">
-						<a href="#" class="page-link">5</a>
-					</li>
-					<li class="page-item">
-						<a href="#" class="page-link">6</a>
-					</li>
-					<li class="page-item">
-						<a href="#" class="page-link">7</a>
-					</li>
-					<li class="page-item">
-						<a href="#" class="page-link">8</a>
-					</li>
-					<li class="page-item">
-						<a href="#" class="page-link">9</a>
-					</li>
-					<li class="page-item">
-						<a href="#" class="page-link">10</a>
-					</li>
+					{% endfor %}
 					<li class="page-item">
 						<a href="#" class="page-link">다음</a>
 					</li>
@@ -165,9 +81,3 @@
 {% include 'bottom_info.html' %}
 </body>
 </html>
-
-
-
-
-
-

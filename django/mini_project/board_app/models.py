@@ -13,6 +13,8 @@ class ContentTable(models.Model) :
     content_idx = models.AutoField(primary_key=True)
     content_subject = models.CharField(max_length=500)
     content_text = models.TextField()
+    # upload_to : settings.py 파일에 설정한 업로드 폴더 하위에
+    # 
     content_file = models.FileField(upload_to='files/', null=True)
     # 외래키(UserTable의 PK 컬럼을 참조합니다.
     # 만약 참조하는 테이블의 PK 컬럼이 아닌 다른 컬럼을 참조하겠다면

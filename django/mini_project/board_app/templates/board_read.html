@@ -24,24 +24,26 @@
 				<div class="card-body">
 					<div class="form-group">
 						<label for="board_writer_name">작성자</label>
-						<input type="text" id="board_writer_name" name="board_writer_name" class="form-control" value="홍길동" disabled="disabled"/>
+						<input type="text" id="board_writer_name" name="board_writer_name" class="form-control" value="{{content_data.content_writer_idx.user_name}}" disabled="disabled"/>
 					</div>
 					<div class="form-group">
 						<label for="board_date">작성날짜</label>
-						<input type="text" id="board_date" name="board_date" class="form-control" value="2018-7-20" disabled="disabled"/>
+						<input type="text" id="board_date" name="board_date" class="form-control" value="{{content_data.content_date|date:'Y-m-d'}}" disabled="disabled"/>
 					</div>
 					<div class="form-group">
 						<label for="board_subject">제목</label>
-						<input type="text" id="board_subject" name="board_subject" class="form-control" value="제목입니다" disabled="disabled"/>
+						<input type="text" id="board_subject" name="board_subject" class="form-control" value="{{content_data.content_subject}}" disabled="disabled"/>
 					</div>
 					<div class="form-group">
 						<label for="board_content">내용</label>
-						<textarea id="board_content" name="board_content" class="form-control" rows="10" style="resize:none" disabled="disabled">본문입니다</textarea>
+						<textarea id="board_content" name="board_content" class="form-control" rows="10" style="resize:none" disabled="disabled">{{content_data.content_text}}</textarea>
 					</div>
+					{% if content_data.content_file %}
 					<div class="form-group">
 						<label for="board_file">첨부 이미지</label>
-						<img src="image/logo.png" width="100%"/>						
+						<img src="{{content_data.content_file.url}}" width="100%"/>						
 					</div>
+					{% endif %}
 					<div class="form-group">
 						<div class="text-right">
 							<a href="board_main.html" class="btn btn-primary">목록보기</a>

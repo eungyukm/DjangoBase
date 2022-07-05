@@ -9,4 +9,5 @@ urlpatterns = [
     path('join_result', views.join_result, name='join_result'),
     path('login_result', views.login_result, name='login_result'),
     path('logout', views.logout, name='logout'),
+    path('modify_user_result', views.modify_user_result, name='modify_user_result'),
 ]

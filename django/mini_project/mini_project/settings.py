@@ -51,7 +51,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'mini_project.middleware.TopMenuMiddleWare.TopMenuMiddleware'
+    'mini_project.middleware.TopMenuMiddleWare.TopMenuMiddleware',
+    'mini_project.middleware.login_chk_middleware.LoginCheckMiddleware',
 ]
 
 ROOT_URLCONF = 'mini_project.urls'

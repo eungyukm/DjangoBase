@@ -21,11 +21,14 @@
 		<div class="col-sm-6">
 			<div class="card shadow">
 				<div class="card-body">
+					{% if login_chk == '1'%}
 					<div class="alert alert-danger">
 						<h3>로그인 실패</h3>
-						<p>아이디 비밀번호를 확인해주세요</p>
+					 	<p>아이디 비밀번호를 확인해주세요</p>
 					</div>
-					<form action="index.html" method="post">
+					{% endif %}
+					<form action="/user/login_result" method="post">
+						{% csrf_token  %}
 						<div class="form-group">
 							<label for="user_id">아이디</label>
 							<input type="text" id="user_id" name="user_id" class="form-control"/>

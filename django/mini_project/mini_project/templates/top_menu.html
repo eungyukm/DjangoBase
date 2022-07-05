@@ -16,18 +16,21 @@
 		</ul>
 		
 		<ul class="navbar-nav ml-auto">
+			{% if request.session.login_chk == True%}
+			<li class="nav-item">
+				<a href="/user/modify_user" class="nav-link">정보수정</a>
+			</li>
+			<li class="nav-item">
+				<a href="/user/logout" class="nav-link">로그아웃</a>
+			</li>
+			{% else %}
 			<li class="nav-item">
 				<a href="/user/login" class="nav-link">로그인</a>
 			</li>
 			<li class="nav-item">
 				<a href="/user/join" class="nav-link">회원가입</a>
 			</li>
-			<li class="nav-item">
-				<a href="/user/modify_user" class="nav-link">정보수정</a>
-			</li>
-			<li class="nav-item">
-				<a href="/" class="nav-link">로그아웃</a>
-			</li>
+			{% endif %}
 		</ul>
 	</div>
 </nav>

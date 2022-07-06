@@ -20,32 +20,38 @@
 		<div class="col-sm-6">
 			<div class="card shadow">
 				<div class="card-body">
-					<form action="board_modify.html" method="post">
+					<form action="/board/board_modify_result" method="post" enctype="multipart/form-data">
+						{% csrf_token %}
+						<input type="hidden" name="board_info_idx" value="{{board_info_idx}}"/>
+						<input type="hidden" name="content_idx" value="{{content_idx}}"/>
+						<input type="hidden" name="page_num" value="{{page_num}}"/>
 						<div class="form-group">
 							<label for="board_writer_name">작성자</label>
-							<input type="text" id="board_writer_name" name="board_writer_name" class="form-control" value="홍길동" disabled="disabled"/>
+							<input type="text" id="board_writer_name" name="board_writer_name" class="form-control" value="{{content_model.content_writer_idx.user_name}}" disabled="disabled"/>
 						</div>
 						<div class="form-group">
 							<label for="board_date">작성날짜</label>
-							<input type="text" id="board_date" name="board_date" class="form-control" value="2018-7-20" disabled="disabled"/>
+							<input type="text" id="board_date" name="board_date" class="form-control" value="{{content_model.content_date|date:'Y-m-d'}}" disabled="disabled"/>
 						</div>
 						<div class="form-group">
 							<label for="board_subject">제목</label>
-							<input type="text" id="board_subject" name="board_subject" class="form-control" value="제목입니다"/>
+							<input type="text" id="board_subject" name="board_subject" class="form-control" value="{{content_model.content_subject}}"/>
 						</div>
 						<div class="form-group">
 							<label for="board_content">내용</label>
-							<textarea id="board_content" name="board_content" class="form-control" rows="10" style="resize:none">본문입니다</textarea>
+							<textarea id="board_content" name="board_content" class="form-control" rows="10" style="resize:none">{{content_model.content_text}}</textarea>
 						</div>
 						<div class="form-group">
 							<label for="board_file">첨부 이미지</label>
-							<img src="image/logo.png" width="100%"/>	
+							{% if content_model.content_file %}
+							<img src="{{content_model.content_file.url}}" width="100%"/>	
+							{% endif %}
 							<input type="file" name="board_file" id="board_file" class="form-control" accept="image/*"/>					
 						</div>
 						<div class="form-group">
 							<div class="text-right">
 								<button type="submit" class="btn btn-primary">수정완료</button>
-								<a href="board_read.html" class="btn btn-info">취소</a>
+								<a href="/board/board_read?board_info_idx={{board_info_idx}}&content_idx={{content_idx}}&page_num={{page_num}}" class="btn btn-info">취소</a>
 							</div>
 						</div>
 					</form>

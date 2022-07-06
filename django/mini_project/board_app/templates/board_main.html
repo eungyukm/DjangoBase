@@ -32,7 +32,7 @@
 					{% for c1 in content_list %}
 					<tr>
 						<td class="text-center d-none d-md-table-cell">{{c1.content_idx}}</td>
-						<td><a href='/board/board_read?board_info_idx={{board_info_idx}}&content_idx={{c1.content_idx}}'>
+						<td><a href='/board/board_read?board_info_idx={{board_info_idx}}&content_idx={{c1.content_idx}}&page_num={{page_num}}'>
 							{{c1.content_subject}}
 						</a></td>
 						<td class="text-center d-none d-md-table-cell">{{c1.content_writer_idx.user_name}}</td>
@@ -45,17 +45,38 @@
 			
 			<div class="d-none d-md-block">
 				<ul class="pagination justify-content-center">
-					<li class="page-item">
-						<a href="#" class="page-link">이전</a>
+					{% if page_prev == 0 %}
+					<li class="page-item disabled">
+						<a href="/board/board_main?board_info_idx={{board_info_idx}}&page_num={{page_prev}}" class="page-link">이전</a>
 					</li>
+					{% else %}
+					<li class="page-item">
+						<a href="/board/board_main?board_info_idx={{board_info_idx}}&page_num={{page_prev}}" class="page-link">이전</a>
+					</li>
+					{% endif %}
+
 					{% for idx in pagenation_data %}
+
+					{% if page_num == idx %}
+					<li class="page-item active">
+						<a href="/board/board_main?board_info_idx={{board_info_idx}}&page_num={{idx}}" class="page-link">{{idx}}</a>
+					</li>
+					{% else %}
 					<li class="page-item">
 						<a href="/board/board_main?board_info_idx={{board_info_idx}}&page_num={{idx}}" class="page-link">{{idx}}</a>
 					</li>
+					{% endif %}
 					{% endfor %}
-					<li class="page-item">
-						<a href="#" class="page-link">다음</a>
+
+					{% if page_next == page_cnt %}
+					<li class="page-item disabled">
+						<a href="/board/board_main?board_info_idx={{board_info_idx}}&page_num={{page_next}}" class="page-link">다음</a>
 					</li>
+					{% else %}
+					<li class="page-item">
+						<a href="/board/board_main?board_info_idx={{board_info_idx}}&page_num={{page_next}}" class="page-link">다음</a>
+					</li>
+					{% endif%}
 				</ul>
 			</div>
 			
@@ -64,6 +85,7 @@
 					<li class="page-item">
 						<a href="#" class="page-link">이전</a>
 					</li>
+
 					<li class="page-item">
 						<a href="#" class="page-link">다음</a>
 					</li>
